@@ -1,4 +1,4 @@
-package com.papb2.ameja.ui.home;
+package com.papb2.ameja.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.papb2.ameja.R;
+import com.papb2.ameja.ui.home.HomeViewModel;
 
 public class HomeFragment extends Fragment {
 
