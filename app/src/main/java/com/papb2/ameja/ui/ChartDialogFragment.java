@@ -1,36 +1,24 @@
 package com.papb2.ameja.ui;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.papb2.ameja.R;
 
-/**
- * <p>A fragment that shows a list of items as a modal bottom sheet.</p>
- * <p>You can show this modal bottom sheet from your activity like this:</p>
- * <pre>
- *     ChartDialogFragment.newInstance(30).show(getSupportFragmentManager(), "dialog");
- * </pre>
- */
-public class ChartDialogFragment extends BottomSheetDialogFragment {
+public class ChartDialogFragment extends BottomSheetDialogFragment implements View.OnClickListener {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_ITEM_COUNT = "item_count";
+    private ClickCallback callback;
 
-    // TODO: Customize parameters
-    public static ChartDialogFragment newInstance(int itemCount) {
-        final ChartDialogFragment fragment = new ChartDialogFragment();
-        final Bundle args = new Bundle();
-        args.putInt(ARG_ITEM_COUNT, itemCount);
-        fragment.setArguments(args);
-        return fragment;
+    public ChartDialogFragment(ClickCallback callback) {
+        this.callback = callback;
     }
 
     @Nullable
@@ -42,46 +30,28 @@ public class ChartDialogFragment extends BottomSheetDialogFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final RecyclerView recyclerView = (RecyclerView) view;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ItemAdapter(getArguments().getInt(ARG_ITEM_COUNT)));
+        super.onViewCreated(view, savedInstanceState);
+        TextView tvMonthly = view.findViewById(R.id.tvMonthly);
+        TextView tvWeekly = view.findViewById(R.id.tvWeekly);
+
+        tvMonthly.setOnClickListener(this);
+        tvWeekly.setOnClickListener(this);
     }
 
-    private class ViewHolder extends RecyclerView.ViewHolder {
-
-        final TextView text;
-
-        ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            // TODO: Customize the item layout
-            super(inflater.inflate(R.layout.fragment_chart_dialog_list_dialog_item, parent, false));
-            text = itemView.findViewById(R.id.text);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvMonthly:
+                callback.onItemClicked(new MonthlyAchievementFragment());
+                break;
+            case R.id.tvWeekly:
+                callback.onItemClicked(new WeeklyAchievementFragment());
+                break;
         }
     }
 
-    private class ItemAdapter extends RecyclerView.Adapter<ViewHolder> {
-
-        private final int mItemCount;
-
-        ItemAdapter(int itemCount) {
-            mItemCount = itemCount;
-        }
-
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.text.setText(String.valueOf(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return mItemCount;
-        }
-
+    interface ClickCallback {
+        void onItemClicked(Fragment fragment);
     }
 
 }
