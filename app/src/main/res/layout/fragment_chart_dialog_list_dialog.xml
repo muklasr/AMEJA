@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:paddingBottom="@dimen/list_item_spacing_half"
-    android:paddingTop="@dimen/list_item_spacing_half"
-    tools:context=".ui.ChartDialogFragment"
-    tools:listitem="@layout/fragment_chart_dialog_list_dialog_item"/>
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    android:paddingTop="32dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/tvMonthly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Monthly Achievement"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/tvWeekly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Weekly Progress"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="14sp" />
+</LinearLayout>
