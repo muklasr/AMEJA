@@ -48,11 +48,8 @@ public class AcheivementFragment extends Fragment {
         });
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Apples", 6371664));
-        data.add(new ValueDataEntry("Pears", 789622));
-        data.add(new ValueDataEntry("Bananas", 7216301));
-        data.add(new ValueDataEntry("Grapes", 1486621));
-        data.add(new ValueDataEntry("Oranges", 1200000));
+        data.add(new ValueDataEntry("Completed", 54));
+        data.add(new ValueDataEntry("Not Completed", 6));
 
         pie.data(data);
 
