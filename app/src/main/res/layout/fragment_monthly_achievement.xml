@@ -8,12 +8,8 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/titleStyle"
         android:text="@string/title_achievement"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,20 +72,15 @@
 
     <TextView
         android:id="@+id/lblCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Completed"
-        android:textColor="@android:color/black"
+        style="@style/completedLabelStyle"
         app:layout_constraintBottom_toTopOf="@id/lblNotCompleted"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblNotCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not Completed"
+        style="@style/notCompletedLabelStyle"
         android:layout_marginBottom="32dp"
-        android:textColor="@android:color/black"
+        android:text="Not Completed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -104,19 +95,15 @@
 
     <TextView
         android:id="@+id/tvCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/completedLabelStyle"
         android:text="54"
-        android:textColor="@android:color/black"
         app:layout_constraintBaseline_toBaselineOf="@id/lblCompleted"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/tvNotCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/notCompletedLabelStyle"
         android:text="6"
-        android:textColor="@android:color/black"
         app:layout_constraintBaseline_toBaselineOf="@id/lblNotCompleted"
         app:layout_constraintRight_toRightOf="parent" />
 
