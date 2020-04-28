@@ -55,7 +55,6 @@
         android:orientation="vertical"
         >
         <TextView
-            android:id="@+id/tudayskejul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today's Schedule"
@@ -79,102 +78,97 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="320dp"
         android:layout_height="130dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:orientation="vertical"
         android:background="@drawable/shape1_home"
-        >
-            <RelativeLayout
-                android:id="@+id/completed"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/completed"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Completed"
                 android:fontFamily="@font/montserrat_semibold"
+                android:text="Completed"
                 android:textColor="@color/design_default_color_background"
-                android:textSize="14sp"
-                />
-                <TextView
+                android:textSize="14sp" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2/10"
-                    android:layout_marginLeft="31dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:textSize="14sp"
-                    android:textColor="#ffffff"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    >
-                </TextView>
-            </RelativeLayout>
+            <TextView
 
-            <RelativeLayout
-                android:id="@+id/importantScedule"
-                android:layout_width="320dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="Important Schedule"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:textColor="@color/design_default_color_background"
-                    android:textSize="14sp"
-                    />
-                <TextView
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="2/10"
+                android:textColor="#ffffff"
+                android:textSize="14sp"></TextView>
+        </RelativeLayout>
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:layout_marginLeft="31dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:textSize="14sp"
-                    android:textColor="#ffffff"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    >
-                </TextView>
+        <RelativeLayout
+            android:id="@+id/importantScedule"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Important Schedule"
+                android:textColor="@color/design_default_color_background"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="15dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="14sp"></TextView>
+
+        </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/notCompleted"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            >
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="Not Completed"
                 android:fontFamily="@font/montserrat_semibold"
+                android:text="Not Completed"
                 android:textColor="@color/design_default_color_background"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tanggaltudei"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
-                android:layout_marginLeft="31dp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textSize="14sp"
-                android:textColor="#ffffff"
                 android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
                 android:layout_marginRight="15dp"
-                >
-            </TextView>
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="14sp"></TextView>
 
         </RelativeLayout>
 
@@ -194,34 +188,33 @@
         </TextView>
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="320dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:orientation="vertical"
         android:background="@drawable/shape2_home"
-        >
-            <TextView
-                android:layout_width="310dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="Meeting with Client"
-                android:fontFamily="@font/montserrat_semibold"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp"
-                android:layout_gravity="top"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                />
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Meeting with Client"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="19.00-20.00 at RuangKerja"
-            android:fontFamily="@font/montserrat_regular"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp"
             android:layout_marginTop="2dp"
-            />
+            android:fontFamily="@font/montserrat_regular"
+            android:text="19.00-20.00 at RuangKerja"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="14sp" />
 
     </LinearLayout>
     <TextView
@@ -238,64 +231,63 @@
     </TextView>
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="320dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:orientation="vertical"
         android:background="@drawable/shape3_home"
-        >
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:fontFamily="@font/montserrat_semibold"
             android:text="Kelas"
-            android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/design_default_color_background"
-            android:textSize="14sp"
-            android:layout_gravity="top"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
+            android:textSize="14sp" />
+
         <TextView
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="07.00-11.30 at Kampus"
-            android:fontFamily="@font/montserrat_regular"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp"
             android:layout_marginTop="2dp"
-            />
+            android:fontFamily="@font/montserrat_regular"
+            android:text="07.00-11.30 at Kampus"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="14sp" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="320dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:orientation="vertical"
         android:background="@drawable/shape3_home"
-        >
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="Diskusi Kegiatan"
-            android:fontFamily="@font/montserrat_semibold"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp"
             android:layout_gravity="top"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Diskusi Kegiatan"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="14sp" />
+
         <TextView
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="13.00-14.30 at Perpusat"
-            android:fontFamily="@font/montserrat_regular"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp"
             android:layout_marginTop="2dp"
-            />
+            android:fontFamily="@font/montserrat_regular"
+            android:text="13.00-14.30 at Perpusat"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>
