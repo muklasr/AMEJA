@@ -66,14 +66,7 @@ public class MonthlyAchievementFragment extends Fragment implements View.OnClick
 
         pie.data(data);
 
-        pie.title("Fruits imported in 2015 (in kg)");
-
         pie.labels().position("outside");
-
-        pie.legend().title().enabled(true);
-        pie.legend().title()
-                .text("Retail channels")
-                .padding(0d, 0d, 10d, 0d);
 
         pie.legend()
                 .position("center-bottom")
