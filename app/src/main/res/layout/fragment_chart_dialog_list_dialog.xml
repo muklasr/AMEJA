@@ -2,30 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_sheet_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_bottom_sheet"
-    android:orientation="vertical"
+    style="@style/bottomSheetStyle"
     app:behavior_hideable="true"
-    android:paddingTop="32dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <TextView
         android:id="@+id/tvMonthly"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Monthly Achievement"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        style="@style/dialogLabelStyle"
+        android:text="@string/monthly_achievement" />
+
     <TextView
         android:id="@+id/tvWeekly"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Weekly Progress"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="14sp" />
+        style="@style/dialogLabelStyle"
+        android:text="@string/weekly_progress" />
 </LinearLayout>
