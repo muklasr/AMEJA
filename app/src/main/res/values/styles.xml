@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,6 +6,93 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
+<!--    Bottom Sheet Style-->
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+
+    <style name="bottomSheetStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">32dp</item>
+    </style>
+
+<!--    EditText Style-->
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/bg_edittext</item>
+    </style>
+
+    <style name="timeEditTextStyle" parent="editTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:hint">@string/_00_00</item>
+        <item name="android:inputType">time</item>
+    </style>
+
+<!--    Button Style-->
+    <style name="commonButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="saveButtonStyle" parent="commonButtonStyle">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:text">@string/save</item>
+    </style>
+
+    <style name="cancelButtonStyle" parent="commonButtonStyle">
+        <item name="android:background">@drawable/bg_button_cancel</item>
+        <item name="android:text">@string/cancel</item>
+    </style>
+
+<!--    Dialog Text Style-->
+    <style name="dialogLabelStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+<!--    Title Style-->
+    <style name="titleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    Achievement Style-->
+    <style name="achievementLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="completedLabelStyle" parent="achievementLabelStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="notCompletedLabelStyle" parent="achievementLabelStyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
 </resources>
