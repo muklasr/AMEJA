@@ -1,4 +1,98 @@
 package com.papb2.ameja.db
 
-class ScheduleHelper {
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import android.database.SQLException
+import android.database.sqlite.SQLiteDatabase
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.DATE
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.ID
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.IMPORTANT
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.TABLE_NAME
+
+class ScheduleHelper(context: Context) {
+
+    companion object {
+        private const val DATABASE_TABLE = TABLE_NAME
+        private lateinit var databaseHelper: DatabaseHelper
+        private lateinit var database: SQLiteDatabase
+    }
+    init {
+        databaseHelper = DatabaseHelper(context)
+    }
+
+    @Throws(SQLException::class)
+    fun open() {
+        database = databaseHelper.writableDatabase
+    }
+
+    fun close() {
+        databaseHelper.close()
+
+        if (database.isOpen)
+            database.close()
+    }
+
+    fun queryById(id: String): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$ID = ?",
+                arrayOf(id),
+                null,
+                null,
+                null,
+                null
+        )
+    }
+
+    fun queryByDate(date: String): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$DATE = ?",
+                arrayOf(date),
+                null,
+                null,
+                null,
+                null
+        )
+    }
+
+    fun queryImportant(state: String): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$IMPORTANT = ?",
+                arrayOf(state),
+                null,
+                null,
+                null,
+                null
+        )
+    }
+
+    fun queryAll(): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "$ID DESC"
+        )
+    }
+
+    fun insert(values: ContentValues?): Long {
+        return database.insert(DATABASE_TABLE, null, values)
+    }
+
+    fun update(id: String, values: ContentValues?): Int {
+        return database.update(DATABASE_TABLE, values, "$ID = ?", arrayOf(id))
+    }
+
+    fun delete(id: String): Int {
+        return database.delete(DATABASE_TABLE, "$ID = ?", arrayOf(id))
+    }
 }
