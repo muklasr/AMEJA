@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.papb2.ameja.R;
 
-public class ScheduleFragment extends Fragment implements View.OnClickListener {
+public class ScheduleFragment extends Fragment implements View.OnClickListener{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,4 +44,5 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
 }
