@@ -17,7 +17,7 @@
         android:text="@string/weekly_schedule" />
 
     <TextView
-        android:id="@+id/tvMonthly"
+        android:id="@+id/tvImportant"
         style="@style/dialogLabelStyle"
-        android:text="@string/monthly_schedule" />
+        android:text="@string/important_schedule" />
 </LinearLayout>
