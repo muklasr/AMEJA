@@ -2,11 +2,28 @@
     <string name="app_name">AMEJA</string>
     <string name="title_home">Home</string>
     <string name="title_schedule">Schedule</string>
-    <string name="title_acheivement">Acheivement</string>
+    <string name="title_achievement">Achievement</string>
     <string name="title_article">Article</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_schedule">Add Schedule</string>
+    <string name="agenda">Agenda</string>
+    <string name="_00_00">00:00</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="today_schedule">Today Schedule</string>
+    <string name="weekly_schedule">Weekly Schedule</string>
+    <string name="monthly_schedule">Monthly Schedule</string>
+    <string name="monthly_achievement">Monthly Achievement</string>
+    <string name="weekly_progress">Weekly Progress</string>
+    <string name="weekly">Weekly</string>
+    <string name="april">April</string>
+    <string name="total_agenda">Total Agenda</string>
+    <string name="not_completed">Not Completed</string>
+    <string name="completed">Completed</string>
+    <string name="important_schedule">Important Schedule</string>
+    <string name="monthly">Monthly</string>
+    <string name="location">Location</string>
     <string name="article_full">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Arcu semper sed consequat massa, ac lorem arcu arcu, diam.
         Habitant rhoncus elementum nunc, maecenas purus.

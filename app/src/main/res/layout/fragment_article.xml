@@ -11,10 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="30dp"
-        android:text="Article"
+        style="@style/titleStyle"
+        android:text="@string/title_article"
         android:fontFamily="@font/montserrat_semibold"
-        android:textSize="14sp"
-        android:textColor="@color/design_default_color_on_secondary"
         >
     </TextView>
 

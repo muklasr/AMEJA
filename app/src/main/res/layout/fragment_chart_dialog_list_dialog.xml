@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    style="@style/bottomSheetStyle"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/tvMonthly"
+        style="@style/dialogLabelStyle"
+        android:text="@string/monthly_achievement" />
+
+    <TextView
+        android:id="@+id/tvWeekly"
+        style="@style/dialogLabelStyle"
+        android:text="@string/weekly_progress" />
+</LinearLayout>
