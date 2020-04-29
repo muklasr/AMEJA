@@ -22,4 +22,7 @@
     <string name="total_agenda">Total Agenda</string>
     <string name="not_completed">Not Completed</string>
     <string name="completed">Completed</string>
+    <string name="important_schedule">Important Schedule</string>
+    <string name="monthly">Monthly</string>
+    <string name="location">Location</string>
 </resources>
