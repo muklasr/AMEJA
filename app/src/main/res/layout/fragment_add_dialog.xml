@@ -46,6 +46,14 @@
             tools:ignore="LabelFor" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/etLocation"
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:hint="@string/location"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
     <Button
         android:id="@+id/btnSave"
         style="@style/saveButtonStyle" />
