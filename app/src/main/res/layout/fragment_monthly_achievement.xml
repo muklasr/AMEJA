@@ -18,11 +18,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_mode"
         android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
         android:padding="8dp"
-        android:text="Monthly     "
+        android:text="@string/monthly"
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnSelection"
@@ -32,11 +32,11 @@
         android:id="@+id/btnSelection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:background="@drawable/bg_mode"
         android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
         android:padding="8dp"
-        android:text="April     "
+        android:text="@string/april"
         android:textAllCaps="false"
         app:layout_constraintLeft_toRightOf="@id/btnMode"
         app:layout_constraintRight_toRightOf="parent"
@@ -65,14 +65,17 @@
         android:id="@+id/lblTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Agenda"
+        android:text="@string/total_agenda"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/lblCompleted"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCompleted"
         style="@style/completedLabelStyle"
+        android:text="@string/completed"
         app:layout_constraintBottom_toTopOf="@id/lblNotCompleted"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -80,7 +83,7 @@
         android:id="@+id/lblNotCompleted"
         style="@style/notCompletedLabelStyle"
         android:layout_marginBottom="32dp"
-        android:text="Not Completed"
+        android:text="@string/not_completed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -90,6 +93,8 @@
         android:layout_height="wrap_content"
         android:text="60"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/lblTotal"
         app:layout_constraintRight_toRightOf="parent" />
 
