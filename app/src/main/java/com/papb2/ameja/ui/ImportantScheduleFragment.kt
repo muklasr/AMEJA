@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.papb2.ameja.MappingHelper.mapCursorToArrayList
+import com.papb2.ameja.helper.MappingHelper.mapCursorToArrayList
 import com.papb2.ameja.R
 import com.papb2.ameja.adapter.ImportantAdapter
 import com.papb2.ameja.db.ScheduleHelper
