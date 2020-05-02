@@ -1,4 +1,4 @@
-package com.papb2.ameja
+package com.papb2.ameja.helper
 
 import android.database.Cursor
 import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.AGENDA
