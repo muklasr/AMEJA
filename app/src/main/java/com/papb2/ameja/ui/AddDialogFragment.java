@@ -76,7 +76,8 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
 
     private void saveSchedule() {
         String agenda = etAgenda.getText().toString();
-        String date = selectedTime.get(Calendar.DATE)+"/"+selectedTime.get(Calendar.MONTH)+"/"+selectedTime.get(Calendar.YEAR);
+        String month = String.valueOf(selectedTime.get(Calendar.MONTH)+1);
+        String date = selectedTime.get(Calendar.DATE)+"/"+month+"/"+selectedTime.get(Calendar.YEAR);
         String start = etStart.getText().toString();
         String end = etEnd.getText().toString();
         String location = etLocation.getText().toString();
