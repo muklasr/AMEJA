@@ -41,6 +41,7 @@ class ImportantAdapter :
     inner class CardViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(schedule: Schedule) {
             with(itemView) {
+                tvDate.text = schedule.date
                 tvAgenda.text = schedule.agenda
                 tvInfo.text = "${schedule.start}-${schedule.end} at ${schedule.location}"
 
