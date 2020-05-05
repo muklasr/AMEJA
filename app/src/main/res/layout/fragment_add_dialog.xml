@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_layout"
+    style="@style/bottomSheetStyle"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/add_schedule"
+        android:textColor="#000"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etAgenda"
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:hint="@string/agenda"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/etStart"
+            style="@style/timeEditTextStyle"
+            android:layout_marginEnd="4dp"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/etEnd"
+            style="@style/timeEditTextStyle"
+            android:layout_marginStart="4dp"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etLocation"
+        style="@style/editTextStyle"
+        android:layout_width="match_parent"
+        android:hint="@string/location"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/saveButtonStyle" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        style="@style/cancelButtonStyle" />
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    style="@style/bottomSheetStyle"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/tvToday"
+        style="@style/dialogLabelStyle"
+        android:text="@string/today_schedule" />
+
+    <TextView
+        android:id="@+id/tvWeekly"
+        style="@style/dialogLabelStyle"
+        android:text="@string/weekly_schedule" />
+
+    <TextView
+        android:id="@+id/tvImportant"
+        style="@style/dialogLabelStyle"
+        android:text="@string/important_schedule" />
+</LinearLayout>

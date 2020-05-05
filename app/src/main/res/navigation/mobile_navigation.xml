@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
-        android:id="@+id/navigation_acheivement"
-        android:name="com.papb2.ameja.ui.AcheivementFragment"
-        android:label="@string/title_acheivement"
-        tools:layout="@layout/fragment_acheivement" />
+        android:id="@+id/navigation_achievement"
+        android:name="com.papb2.ameja.ui.AchievementFragment"
+        android:label="@string/title_achievement"
+        tools:layout="@layout/fragment_achievement" />
 
     <fragment
         android:id="@+id/navigation_article"
