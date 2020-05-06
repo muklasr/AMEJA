@@ -26,6 +26,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.AGENDA;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.DATE;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.END;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.ID;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.LOCATION;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.START;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -82,9 +89,7 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
     }
 
     @Override
-    public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getContext(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
-    }
+    public void onEventClick(WeekViewEvent event, RectF eventRect) { showDialog(event); }
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
@@ -107,17 +112,18 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToPosition(i);
-                String agenda = cursor.getString(cursor.getColumnIndex("agenda"));
-                String location = cursor.getString(cursor.getColumnIndex("location"));
+                Integer id = cursor.getInt(cursor.getColumnIndex(ID));
+                String agenda = cursor.getString(cursor.getColumnIndex(AGENDA));
+                String location = cursor.getString(cursor.getColumnIndex(LOCATION));
                 String title = agenda + " at " + location;
 
-                String[] start = cursor.getString(cursor.getColumnIndex("start")).split(":");
+                String[] start = cursor.getString(cursor.getColumnIndex(START)).split(":");
                 int startHour = Integer.parseInt(start[0]);
                 int startMinute = Integer.parseInt(start[1]);
-                String[] end = cursor.getString(cursor.getColumnIndex("end")).split(":");
+                String[] end = cursor.getString(cursor.getColumnIndex(END)).split(":");
                 int endHour = Integer.parseInt(end[0]);
                 int endMinute = Integer.parseInt(end[1]);
-                String[] date = cursor.getString(cursor.getColumnIndex("date")).split("/");
+                String[] date = cursor.getString(cursor.getColumnIndex(DATE)).split("/");
                 int day = Integer.parseInt(date[0]);
                 int year = Integer.parseInt(date[2]);
 
@@ -130,7 +136,7 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
                 Calendar endTime = (Calendar) startTime.clone();
                 endTime.set(Calendar.HOUR_OF_DAY, endHour);
                 endTime.set(Calendar.MINUTE, endMinute);
-                WeekViewEvent event = new WeekViewEvent(i, title, startTime, endTime);
+                WeekViewEvent event = new WeekViewEvent(id, title, startTime, endTime);
                 event.setColor(getResources().getColor(R.color.colorAccent));
                 events.add(event);
             }
@@ -269,6 +275,11 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
 
     private void showDialog(Calendar time) {
         AddDialogFragment addDialogFragment = new AddDialogFragment(time);
+        addDialogFragment.show(getChildFragmentManager(), "Dialog");
+    }
+
+    private void showDialog(WeekViewEvent event) {
+        AddDialogFragment addDialogFragment = new AddDialogFragment(event.getId());
         addDialogFragment.show(getChildFragmentManager(), "Dialog");
     }
 
