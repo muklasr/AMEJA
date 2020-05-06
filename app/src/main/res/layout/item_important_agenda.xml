@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="TUE"
         android:textColor="@android:color/black"
         android:textSize="20sp"
@@ -17,10 +19,11 @@
 
     <TextView
         android:id="@+id/tvDate"
+        tools:text="28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="28"
+        android:fontFamily="@font/montserrat_regular"
         android:textColor="@android:color/black"
         android:textSize="32sp"
         app:layout_constraintLeft_toLeftOf="@id/tvDay"
@@ -30,10 +33,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="4dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,18 +55,19 @@
 
             <TextView
                 android:id="@+id/tvAgenda"
+                tools:text="Agenda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Agenda"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvInfo"
+                tools:text="19.00 at Omahe Pak RT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="19.00 at Omahe Pak RT"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@android:color/black" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
