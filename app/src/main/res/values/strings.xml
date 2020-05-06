@@ -62,4 +62,8 @@
     <string name="schedule_list">Schedule List</string>
     <string name="article_image">Article Image</string>
     <string name="no_schedule">There\'s no schedule for today</string>
+    <string name="update_success">Schedule successfully updated</string>
+    <string name="update_fail">Schedule failed to be updated</string>
+    <string name="add_success">Schedule successfully added</string>
+    <string name="add_fail">Schedule failed to be added</string>
 </resources>
