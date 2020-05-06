@@ -77,7 +77,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/montserrat_semibold</item>
     </style>
 
@@ -85,8 +85,12 @@
     <style name="achievementLabelStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/montserrat_semibold</item>
+    </style>
+
+    <style name="totalLabelStyle" parent="achievementLabelStyle">
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="completedLabelStyle" parent="achievementLabelStyle">
@@ -96,4 +100,5 @@
     <style name="notCompletedLabelStyle" parent="achievementLabelStyle">
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
+
 </resources>
