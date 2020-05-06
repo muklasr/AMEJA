@@ -1,6 +1,7 @@
 package com.papb2.ameja.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.papb2.ameja.adapter.ImportantAdapter
 import com.papb2.ameja.db.ScheduleHelper
 import com.papb2.ameja.helper.MappingHelper.mapCursorToArrayList
 import com.papb2.ameja.model.Schedule
+import kotlinx.android.synthetic.main.fragment_today_schedule.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -57,17 +59,23 @@ class TodayScheduleFragment : Fragment() {
         rvSchedule.adapter = adapter
     }
     private fun loadSchedulesAsync() {
+        val calendar = Calendar.getInstance()
+        val sdf = SimpleDateFormat("d/M/YYYY", Locale.getDefault())
+        val date = sdf.format(calendar.time)
+
         GlobalScope.launch(Dispatchers.Main) {
             val deferredSchedules = async(Dispatchers.IO) {
-                val cursor = scheduleHelper.queryByDate("2/5/2020")
+                val cursor = scheduleHelper.queryByDate(date)
                 mapCursorToArrayList(cursor)
             }
 
             val schedules = deferredSchedules.await()
             if (schedules.size > 0) {
                 adapter.setData(schedules)
+                tvFeedback.text = ""
             } else {
                 adapter.listSchedule = ArrayList()
+                tvFeedback.text = getString(R.string.no_schedule)
             }
         }
     }
