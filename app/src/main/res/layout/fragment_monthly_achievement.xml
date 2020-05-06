@@ -63,12 +63,8 @@
 
     <TextView
         android:id="@+id/lblTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/totalLabelStyle"
         android:text="@string/total_agenda"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/lblCompleted"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -89,12 +85,8 @@
 
     <TextView
         android:id="@+id/tvTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/totalLabelStyle"
         android:text="60"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/lblTotal"
         app:layout_constraintRight_toRightOf="parent" />
 
