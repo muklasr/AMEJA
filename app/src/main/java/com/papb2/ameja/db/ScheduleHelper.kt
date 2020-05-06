@@ -59,12 +59,12 @@ class ScheduleHelper(context: Context) {
         )
     }
 
-    fun queryImportant(state: String): Cursor {
+    fun queryImportant(state: Boolean): Cursor {
         return database.query(
                 DATABASE_TABLE,
                 null,
                 "$IMPORTANT = ?",
-                arrayOf(state),
+                arrayOf(state.toString()),
                 null,
                 null,
                 null,
