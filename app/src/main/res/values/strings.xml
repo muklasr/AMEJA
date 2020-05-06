@@ -61,4 +61,5 @@
     <string name="today_s_schedule">Today\'s Schedule</string>
     <string name="schedule_list">Schedule List</string>
     <string name="article_image">Article Image</string>
+    <string name="no_schedule">There\'s no schedule for today</string>
 </resources>
