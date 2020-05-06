@@ -1,5 +1,6 @@
 package com.papb2.ameja.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +42,8 @@ class ImportantAdapter :
     inner class CardViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(schedule: Schedule) {
             with(itemView) {
+                val date = schedule.date!!.split("/")
+                tvDate.text = date[0]
                 tvAgenda.text = schedule.agenda
                 tvInfo.text = "${schedule.start}-${schedule.end} at ${schedule.location}"
 

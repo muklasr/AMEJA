@@ -57,4 +57,8 @@
         Sit id ultricies a in id nunc ornare. Morbi dolor purus suspendisse accumsan augue pharetra vulputate turpis dolor.
         Magna libero, diam massa id egestas non a gravida. Hendrerit tempor lectus ut arcu commodo enim egestas ipsum.
         Vestibulum blandit in dignissim arcu. </string>
+    <string name="setting_button">Setting Button</string>
+    <string name="today_s_schedule">Today\'s Schedule</string>
+    <string name="schedule_list">Schedule List</string>
+    <string name="article_image">Article Image</string>
 </resources>

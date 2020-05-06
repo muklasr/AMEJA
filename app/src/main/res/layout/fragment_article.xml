@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/design_default_color_background"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
+        style="@style/titleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="30dp"
-        style="@style/titleStyle"
-        android:text="@string/title_article"
         android:fontFamily="@font/montserrat_semibold"
-        >
-    </TextView>
+        android:text="@string/title_article" />
 
     <LinearLayout
         android:layout_width="340dp"
         android:layout_height="80dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="30dp"
         android:background="@drawable/shape2_home"
         android:orientation="vertical">
 
@@ -29,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:fontFamily="@font/montserrat_semibold"
             android:text="Meeting with Client"
@@ -39,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/montserrat_regular"
             android:text="19.00-20.00 at RuangKerja"

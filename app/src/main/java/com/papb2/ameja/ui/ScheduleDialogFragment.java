@@ -45,6 +45,8 @@ public class ScheduleDialogFragment extends BottomSheetDialogFragment implements
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         switch (v.getId()){
             case R.id.tvToday:
+                transaction.replace(R.id.container, new TodayScheduleFragment()).addToBackStack(null).commit();
+                this.dismiss();
                 break;
             case R.id.tvWeekly:
                 transaction.replace(R.id.container, new WeeklyScheduleFragment()).addToBackStack(null).commit();

@@ -18,6 +18,7 @@ import com.papb2.ameja.R;
 import com.papb2.ameja.db.ScheduleHelper;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.AGENDA;
 import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.DATE;
@@ -33,8 +34,6 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
     private EditText etStart;
     private EditText etEnd;
     private EditText etLocation;
-    private Button btnSave;
-    private Button btnCancel;
 
     private Calendar selectedTime;
 
@@ -55,11 +54,12 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
         etStart = view.findViewById(R.id.etStart);
         etEnd = view.findViewById(R.id.etEnd);
         etLocation = view.findViewById(R.id.etLocation);
-        btnSave = view.findViewById(R.id.btnSave);
-        btnCancel = view.findViewById(R.id.btnCancel);
+        Button btnSave = view.findViewById(R.id.btnSave);
+        Button btnCancel = view.findViewById(R.id.btnCancel);
 
         etStart.setText(selectedTime.get(Calendar.HOUR_OF_DAY) + ":00");
         btnSave.setOnClickListener(this);
+        btnCancel.setOnClickListener(this);
     }
 
     @Override
@@ -76,12 +76,12 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
 
     private void saveSchedule() {
         String agenda = etAgenda.getText().toString();
-        String date = String.valueOf(selectedTime.get(Calendar.DATE));
+        String month = String.valueOf(selectedTime.get(Calendar.MONTH)+1);
+        String date = selectedTime.get(Calendar.DATE)+"/"+month+"/"+selectedTime.get(Calendar.YEAR);
         String start = etStart.getText().toString();
         String end = etEnd.getText().toString();
         String location = etLocation.getText().toString();
         int status = 0;
-        boolean important = false;
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(AGENDA, agenda);
@@ -90,9 +90,9 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
         contentValues.put(END, end);
         contentValues.put(LOCATION, location);
         contentValues.put(STATUS, status);
-        contentValues.put(IMPORTANT, important);
+        contentValues.put(IMPORTANT, false);
 
-        ScheduleHelper scheduleHelper = new ScheduleHelper(getContext());
+        ScheduleHelper scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
         scheduleHelper.open();
          scheduleHelper.insert(contentValues);
         Cursor cursor = scheduleHelper.queryAll();
@@ -102,5 +102,8 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
             Toast.makeText(getContext(), "Schedule failed to be added", Toast.LENGTH_LONG).show();
         }
         scheduleHelper.close();
+        assert getParentFragment() != null;
+        ((WeeklyScheduleFragment)getParentFragment()).refreshCalendar();
+        this.dismiss();
     }
 }
