@@ -55,17 +55,17 @@ class ImportantScheduleFragment : Fragment() {
         rvSchedule.setHasFixedSize(true)
         rvSchedule.adapter = adapter
     }
+
     private fun loadSchedulesAsync() {
         GlobalScope.launch(Dispatchers.Main) {
             val deferredSchedules = async(Dispatchers.IO) {
-                val cursor = scheduleHelper.queryAll()
+                val cursor = scheduleHelper.queryImportant(true)
                 mapCursorToArrayList(cursor)
             }
 
             val schedules = deferredSchedules.await()
             if (schedules.size > 0) {
                 adapter.setData(schedules)
-                Log.d("TAG", "Size ${schedules.size}")
             } else {
                 adapter.listSchedule = ArrayList()
             }
