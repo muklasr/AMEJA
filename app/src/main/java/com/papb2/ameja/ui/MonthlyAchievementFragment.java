@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anychart.AnyChart;
@@ -22,13 +24,18 @@ import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
 import com.papb2.ameja.R;
+import com.papb2.ameja.db.ScheduleHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MonthlyAchievementFragment extends Fragment implements View.OnClickListener  {
 
     private AnyChartView anyChartView;
+    private int total;
+    private int completed;
+    private int notCompleted;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,10 +49,24 @@ public class MonthlyAchievementFragment extends Fragment implements View.OnClick
         super.onViewCreated(view, savedInstanceState);
         anyChartView = view.findViewById(R.id.any_chart_view);
         Button btnMode = view.findViewById(R.id.btnMode);
-
-        setupChart(view);
+        TextView tvTotal = view.findViewById(R.id.tvTotal);
+        TextView tvCompleted = view.findViewById(R.id.tvCompleted);
+        TextView tvNotCompleted = view.findViewById(R.id.tvNotCompleted);
 
         btnMode.setOnClickListener(this);
+
+        ScheduleHelper scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
+        scheduleHelper.open();
+        this.notCompleted = scheduleHelper.countByStatus(0);
+        this.completed = scheduleHelper.countByStatus(1);
+        this.total = scheduleHelper.countAll();
+        scheduleHelper.close();
+
+        setupChart(view);
+        tvTotal.setText(String.valueOf(total));
+        tvCompleted.setText(String.valueOf(completed));
+        tvNotCompleted.setText(String.valueOf(notCompleted));
+
     }
 
     private void setupChart(View view) {
@@ -61,8 +82,8 @@ public class MonthlyAchievementFragment extends Fragment implements View.OnClick
         });
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Completed", 54));
-        data.add(new ValueDataEntry("Not Completed", 6));
+        data.add(new ValueDataEntry(getString(R.string.completed), this.completed));
+        data.add(new ValueDataEntry(getString(R.string.not_completed), this.notCompleted));
 
         pie.data(data);
 
