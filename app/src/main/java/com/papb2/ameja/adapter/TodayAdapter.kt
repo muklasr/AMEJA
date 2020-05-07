@@ -45,7 +45,7 @@ class TodayAdapter :
         fun bind(schedule: Schedule) {
             with(itemView) {
                 tvAgenda.text = schedule.agenda
-                tvInfo.text = "${schedule.start}-${schedule.end} at ${schedule.location}"
+                tvInfo.text = "${schedule.start}-${schedule.end}${context.getString(R.string.at)}${schedule.location}"
                 if (schedule.status > 0) {
                     checkBox.isChecked = true
                     tvAgenda.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
