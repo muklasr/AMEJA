@@ -66,4 +66,5 @@
     <string name="update_fail">Schedule failed to be updated</string>
     <string name="add_success">Schedule successfully added</string>
     <string name="add_fail">Schedule failed to be added</string>
+    <string name="at">\ at\ \ </string>
 </resources>
