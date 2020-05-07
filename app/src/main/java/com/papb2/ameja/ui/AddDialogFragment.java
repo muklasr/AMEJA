@@ -3,6 +3,7 @@ package com.papb2.ameja.ui;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.papb2.ameja.R;
 import com.papb2.ameja.db.ScheduleHelper;
+import com.papb2.ameja.model.Schedule;
+import com.papb2.ameja.receiver.AlarmReceiver;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -135,6 +138,8 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
         contentValues.put(STATUS, status);
         contentValues.put(IMPORTANT, isImportant);
 
+        setupReminder(new Schedule(0, agenda, date, start, end, location, status, isImportant));
+
         scheduleHelper.open();
 
         if (isUpdate) {
@@ -161,5 +166,10 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
         assert getParentFragment() != null;
         ((WeeklyScheduleFragment) getParentFragment()).refreshCalendar();
         this.dismiss();
+    }
+
+    private void setupReminder(Schedule schedule){
+        AlarmReceiver alarmReceiver = new AlarmReceiver();
+        alarmReceiver.setAgendaReminder(Objects.requireNonNull(getContext()), schedule);
     }
 }
