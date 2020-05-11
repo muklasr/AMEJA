@@ -1,18 +1,16 @@
 package com.papb2.ameja.ui;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -26,11 +24,14 @@ import com.anychart.enums.LegendLayout;
 import com.papb2.ameja.R;
 import com.papb2.ameja.db.ScheduleHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
-public class MonthlyAchievementFragment extends Fragment implements View.OnClickListener  {
+public class MonthlyAchievementFragment extends Fragment implements View.OnClickListener {
 
     private AnyChartView anyChartView;
     private int total;
@@ -57,9 +58,13 @@ public class MonthlyAchievementFragment extends Fragment implements View.OnClick
 
         ScheduleHelper scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
         scheduleHelper.open();
-        this.notCompleted = scheduleHelper.countByStatus(0);
-        this.completed = scheduleHelper.countByStatus(1);
-        this.total = scheduleHelper.countAll();
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("/M/YYYY", Locale.getDefault());
+        String month = sdf.format(calendar.getTime());
+        this.notCompleted = scheduleHelper.countByMonthAndStatus(month, 0);
+        this.completed = scheduleHelper.countByMonthAndStatus(month, 1);
+        this.total = this.notCompleted + this.completed;
         scheduleHelper.close();
 
         setupChart(view);
