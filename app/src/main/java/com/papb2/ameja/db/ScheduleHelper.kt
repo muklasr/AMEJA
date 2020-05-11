@@ -56,7 +56,7 @@ class ScheduleHelper(context: Context) {
                 arrayOf(date),
                 null,
                 null,
-                START,
+                "$START ASC",
                 null
         )
     }
@@ -74,13 +74,25 @@ class ScheduleHelper(context: Context) {
         )
     }
 
-
-    fun querybyStatus(status: Int): Cursor {
+    private fun queryByMonthAndStatus(month: String, status: Int): Cursor {
         return database.query(
                 DATABASE_TABLE,
                 null,
-                "$STATUS = ?",
-                arrayOf(status.toString()),
+                "$DATE like '%$month%' AND $STATUS = $status",
+                null,
+                null,
+                null,
+                null,
+                null
+        )
+    }
+
+    private fun queryByDateAndStatus(status: Int, date: String): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$DATE = '$date' AND $STATUS = $status",
+                null,
                 null,
                 null,
                 null,
@@ -112,11 +124,11 @@ class ScheduleHelper(context: Context) {
         return database.delete(DATABASE_TABLE, "$ID = ?", arrayOf(id))
     }
 
-    fun countAll(): Int {
-        return queryAll().count
+    fun countByMonthAndStatus(month: String, status: Int):Int{
+        return queryByMonthAndStatus(month, status).count
     }
 
-    fun countByStatus(status: Int):Int{
-        return querybyStatus(status).count
+    fun countByDateAndStatus(date: String, status: Int): Int{
+        return queryByDateAndStatus(status, date).count
     }
 }
