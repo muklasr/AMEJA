@@ -67,4 +67,5 @@
     <string name="add_fail">Schedule failed to be added</string>
     <string name="at">\ at\ \ </string>
     <string name="today">Today</string>
+    <string name="delete_success">\ successfully deleted</string>
 </resources>
