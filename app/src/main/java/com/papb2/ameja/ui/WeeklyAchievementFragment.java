@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,9 +24,14 @@ import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
 import com.papb2.ameja.R;
+import com.papb2.ameja.db.ScheduleHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +39,8 @@ import java.util.List;
 public class WeeklyAchievementFragment extends Fragment implements View.OnClickListener {
 
     private AnyChartView anyChartView;
+    private TextView tvCompleted;
+    private TextView tvNotCompleted;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +54,8 @@ public class WeeklyAchievementFragment extends Fragment implements View.OnClickL
         super.onViewCreated(view, savedInstanceState);
         anyChartView = view.findViewById(R.id.any_chart_view);
         Button btnMode = view.findViewById(R.id.btnMode);
+        tvCompleted = view.findViewById(R.id.tvCompleted);
+        tvNotCompleted = view.findViewById(R.id.tvNotCompleted);
 
         setupChart(view);
 
@@ -74,13 +84,34 @@ public class WeeklyAchievementFragment extends Fragment implements View.OnClickL
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
 
         List<DataEntry> seriesData = new ArrayList<>();
-        seriesData.add(new CustomDataEntry("7 April", 10, 2));
-        seriesData.add(new CustomDataEntry("8 April", 12, 0));
-        seriesData.add(new CustomDataEntry("9 April", 12, 1));
-        seriesData.add(new CustomDataEntry("10 April", 10, 0));
-        seriesData.add(new CustomDataEntry("11 April", 14, 3));
-        seriesData.add(new CustomDataEntry("12 April", 12, 2));
-        seriesData.add(new CustomDataEntry("Today", 12, 3));
+
+        ScheduleHelper scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
+        scheduleHelper.open();
+
+        int sumCompleted = 0;
+        int sumNotCompleted = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -7);
+
+        for (int i = 7; i > 0; i--) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            SimpleDateFormat sdf = new SimpleDateFormat("d/M/YYYY", Locale.getDefault());
+            String date = sdf.format(calendar.getTime());
+
+            int completed = scheduleHelper.countByDateAndStatus(date, 1);
+            int notCompleted = scheduleHelper.countByDateAndStatus(date, 0);
+            sumCompleted += completed;
+            sumNotCompleted += notCompleted;
+
+            SimpleDateFormat sdf2 = new SimpleDateFormat("d MMMM", Locale.getDefault());
+            String label = sdf2.format(calendar.getTime());
+            if (i < 2) label = getString(R.string.today);
+            seriesData.add(new CustomDataEntry(label, completed, notCompleted));
+        }
+        scheduleHelper.close();
+
+        tvCompleted.setText(String.valueOf(sumCompleted));
+        tvNotCompleted.setText(String.valueOf(sumNotCompleted));
 
         Set set = Set.instantiate();
         set.data(seriesData);
@@ -88,7 +119,7 @@ public class WeeklyAchievementFragment extends Fragment implements View.OnClickL
         Mapping series2Mapping = set.mapAs("{ x: 'x', value: 'value2' }");
 
         Line series1 = cartesian.line(series1Mapping);
-        series1.name("Completed");
+        series1.name(getString(R.string.completed));
         series1.hovered().markers().enabled(true);
         series1.hovered().markers()
                 .type(MarkerType.CIRCLE)
@@ -100,7 +131,7 @@ public class WeeklyAchievementFragment extends Fragment implements View.OnClickL
                 .offsetY(5d);
 
         Line series2 = cartesian.line(series2Mapping);
-        series2.name("Not Completed");
+        series2.name(getString(R.string.not_completed));
         series2.hovered().markers().enabled(true);
         series2.hovered().markers()
                 .type(MarkerType.CIRCLE)
