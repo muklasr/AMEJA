@@ -68,4 +68,7 @@
     <string name="at">\ at\ \ </string>
     <string name="today">Today</string>
     <string name="delete_success">\ successfully deleted</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="update_schedule">Update Schedule</string>
 </resources>

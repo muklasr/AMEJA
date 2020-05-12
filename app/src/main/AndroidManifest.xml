@@ -9,7 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingActivity"></activity>
+        <receiver android:name=".widget.TodayScheduleWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/today_schedule_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.ScheduleWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:readPermission="com.papb2.AMEJA.READ_DATABASE"
+            android:writePermission="com.papb2.AMEJA.WRITE_DATABASE" />
+
+        <activity android:name=".SettingActivity" />
 
         <receiver
             android:name=".receiver.AlarmReceiver"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -72,16 +73,20 @@ public class AddDialogFragment extends BottomSheetDialogFragment implements View
         etLocation = view.findViewById(R.id.etLocation);
         Button btnSave = view.findViewById(R.id.btnSave);
         Button btnCancel = view.findViewById(R.id.btnCancel);
+        TextView dialogTitle = view.findViewById(R.id.dialogTitle);
 
         btnSave.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
 
         scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
 
-        if (isUpdate)
+        if (isUpdate) {
             loadData();
-        else
+            dialogTitle.setText(R.string.update_schedule);
+        } else {
             etStart.setText(selectedTime.get(Calendar.HOUR_OF_DAY) + ":00");
+            dialogTitle.setText(getString(R.string.add_schedule));
+        }
     }
 
     private void loadData() {

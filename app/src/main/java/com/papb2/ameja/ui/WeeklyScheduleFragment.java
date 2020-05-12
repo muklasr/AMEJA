@@ -1,11 +1,14 @@
 package com.papb2.ameja.ui;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.database.Cursor;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,7 @@ import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.papb2.ameja.R;
+import com.papb2.ameja.widget.TodayScheduleWidget;
 import com.papb2.ameja.db.ScheduleHelper;
 
 import java.text.SimpleDateFormat;
@@ -158,5 +162,16 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
 
     void refreshCalendar() {
         mWeekView.notifyDatasetChanged();
+        updateWidget();
+    }
+
+    private void updateWidget() {
+        AppWidgetManager manager = AppWidgetManager.getInstance(getContext());
+        RemoteViews view = new RemoteViews(Objects.requireNonNull(getActivity()).getPackageName(), R.layout.today_schedule_widget);
+        ComponentName theWidget = new ComponentName(Objects.requireNonNull(getContext()), TodayScheduleWidget.class);
+        int[] ids = manager.getAppWidgetIds(theWidget);
+
+        manager.notifyAppWidgetViewDataChanged(ids, R.id.lvSchedule);
+        manager.updateAppWidget(ids, view);
     }
 }

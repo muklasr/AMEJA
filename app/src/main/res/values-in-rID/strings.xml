@@ -68,4 +68,7 @@
     <string name="at">\ di\ \ </string>
     <string name="today">Hari ini</string>
     <string name="delete_success">\ berhasil dihapus</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="update_schedule">Ubah Jadwal</string>
 </resources>

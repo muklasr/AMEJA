@@ -97,7 +97,7 @@ class TodayScheduleFragment : Fragment() {
                                 contentValues.put(ScheduleColumns.STATUS, 0)
                             }
                         }
-                        scheduleHelper.update(data.id.toString(), contentValues);
+                        scheduleHelper.update(data.id.toString(), contentValues)
                     }
                 })
                 tvFeedback.text = ""

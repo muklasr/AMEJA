@@ -56,7 +56,7 @@ class ScheduleHelper(context: Context) {
                 arrayOf(date),
                 null,
                 null,
-                "$START ASC",
+                "date($START) ASC",
                 null
         )
     }
