@@ -5,7 +5,6 @@
     <string name="title_achievement">Achievement</string>
     <string name="title_article">Article</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_schedule">Add Schedule</string>
     <string name="agenda">Agenda</string>
     <string name="_00_00">00:00</string>
@@ -61,4 +60,17 @@
     <string name="today_s_schedule">Today\'s Schedule</string>
     <string name="schedule_list">Schedule List</string>
     <string name="article_image">Article Image</string>
+    <string name="no_schedule">There\'s no schedule for today</string>
+    <string name="update_success">Schedule successfully updated</string>
+    <string name="update_fail">Schedule failed to be updated</string>
+    <string name="add_success">Schedule successfully added</string>
+    <string name="add_fail">Schedule failed to be added</string>
+    <string name="at">\ at\ \ </string>
+    <string name="today">Today</string>
+    <string name="delete_success">\ successfully deleted</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="update_schedule">Update Schedule</string>
+    <string name="hi">Hi,</string>
+    <string name="welcome">Welcome!</string>
 </resources>

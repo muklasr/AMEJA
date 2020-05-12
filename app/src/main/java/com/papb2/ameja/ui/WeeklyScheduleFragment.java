@@ -1,11 +1,14 @@
 package com.papb2.ameja.ui;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.database.Cursor;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,7 @@ import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.papb2.ameja.R;
+import com.papb2.ameja.widget.TodayScheduleWidget;
 import com.papb2.ameja.db.ScheduleHelper;
 
 import java.text.SimpleDateFormat;
@@ -26,15 +30,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.AGENDA;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.DATE;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.END;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.ID;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.LOCATION;
+import static com.papb2.ameja.db.DatabaseContract.ScheduleColumns.START;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WeeklyScheduleFragment extends Fragment implements WeekView.EventClickListener, MonthLoader.MonthChangeListener, WeekView.EventLongPressListener, WeekView.EmptyViewClickListener {
 
-//    private static final int TYPE_DAY_VIEW = 1;
-//    private static final int TYPE_THREE_DAY_VIEW = 2;
-//    private static final int TYPE_WEEK_VIEW = 3;
-//    private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     private WeekView mWeekView;
 
     public WeeklyScheduleFragment() {
@@ -82,13 +89,16 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
     }
 
     @Override
-    public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getContext(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
-    }
+    public void onEventClick(WeekViewEvent event, RectF eventRect) { showDialog(event); }
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getContext(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+        ScheduleHelper scheduleHelper = new ScheduleHelper(Objects.requireNonNull(getContext()));
+        scheduleHelper.open();
+        scheduleHelper.delete(String.valueOf(event.getId()));
+        scheduleHelper.close();
+        refreshCalendar();
+        Toast.makeText(getContext(), event.getName()+getString(R.string.delete_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -107,17 +117,18 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
         if (cursor.getCount() > 0) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.moveToPosition(i);
-                String agenda = cursor.getString(cursor.getColumnIndex("agenda"));
-                String location = cursor.getString(cursor.getColumnIndex("location"));
+                int id = cursor.getInt(cursor.getColumnIndex(ID));
+                String agenda = cursor.getString(cursor.getColumnIndex(AGENDA));
+                String location = cursor.getString(cursor.getColumnIndex(LOCATION));
                 String title = agenda + " at " + location;
 
-                String[] start = cursor.getString(cursor.getColumnIndex("start")).split(":");
+                String[] start = cursor.getString(cursor.getColumnIndex(START)).split(":");
                 int startHour = Integer.parseInt(start[0]);
                 int startMinute = Integer.parseInt(start[1]);
-                String[] end = cursor.getString(cursor.getColumnIndex("end")).split(":");
+                String[] end = cursor.getString(cursor.getColumnIndex(END)).split(":");
                 int endHour = Integer.parseInt(end[0]);
                 int endMinute = Integer.parseInt(end[1]);
-                String[] date = cursor.getString(cursor.getColumnIndex("date")).split("/");
+                String[] date = cursor.getString(cursor.getColumnIndex(DATE)).split("/");
                 int day = Integer.parseInt(date[0]);
                 int year = Integer.parseInt(date[2]);
 
@@ -130,140 +141,12 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
                 Calendar endTime = (Calendar) startTime.clone();
                 endTime.set(Calendar.HOUR_OF_DAY, endHour);
                 endTime.set(Calendar.MINUTE, endMinute);
-                WeekViewEvent event = new WeekViewEvent(i, title, startTime, endTime);
+                WeekViewEvent event = new WeekViewEvent(id, title, startTime, endTime);
                 event.setColor(getResources().getColor(R.color.colorAccent));
                 events.add(event);
             }
         }
         scheduleHelper.close();
-
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 30);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.HOUR_OF_DAY, 4);
-//        endTime.set(Calendar.MINUTE, 30);
-//        endTime.set(Calendar.MONTH, newMonth - 1);
-//        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 4);
-//        startTime.set(Calendar.MINUTE, 20);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.HOUR_OF_DAY, 5);
-//        endTime.set(Calendar.MINUTE, 0);
-//        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 5);
-//        startTime.set(Calendar.MINUTE, 30);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 2);
-//        endTime.set(Calendar.MONTH, newMonth - 1);
-//        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 5);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        startTime.add(Calendar.DATE, 1);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        endTime.set(Calendar.MONTH, newMonth - 1);
-//        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 15);
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_04));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 1);
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_01));
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, startTime.getActualMaximum(Calendar.DAY_OF_MONTH));
-//        startTime.set(Calendar.HOUR_OF_DAY, 15);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 3);
-//        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_02));
-//        events.add(event);
-//
-//        //AllDay event
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 0);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR_OF_DAY, 23);
-//        event = new WeekViewEvent(7, getEventTitle(startTime), null, startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_04));
-//        events.add(event);
-//        events.add(event);
-//
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 8);
-//        startTime.set(Calendar.HOUR_OF_DAY, 2);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.DAY_OF_MONTH, 10);
-//        endTime.set(Calendar.HOUR_OF_DAY, 23);
-//        event = new WeekViewEvent(8, getEventTitle(startTime), null, startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_03));
-//        events.add(event);
-//
-//        // All day event until 00:00 next day
-//        startTime = Calendar.getInstance();
-//        startTime.set(Calendar.DAY_OF_MONTH, 10);
-//        startTime.set(Calendar.HOUR_OF_DAY, 0);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.SECOND, 0);
-//        startTime.set(Calendar.MILLISECOND, 0);
-//        startTime.set(Calendar.MONTH, newMonth - 1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.DAY_OF_MONTH, 11);
-//        event = new WeekViewEvent(8, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.event_color_01));
-//        events.add(event);
-
         return events;
     }
 
@@ -272,7 +155,23 @@ public class WeeklyScheduleFragment extends Fragment implements WeekView.EventCl
         addDialogFragment.show(getChildFragmentManager(), "Dialog");
     }
 
+    private void showDialog(WeekViewEvent event) {
+        AddDialogFragment addDialogFragment = new AddDialogFragment(event.getId());
+        addDialogFragment.show(getChildFragmentManager(), "Dialog");
+    }
+
     void refreshCalendar() {
         mWeekView.notifyDatasetChanged();
+        updateWidget();
+    }
+
+    private void updateWidget() {
+        AppWidgetManager manager = AppWidgetManager.getInstance(getContext());
+        RemoteViews view = new RemoteViews(Objects.requireNonNull(getActivity()).getPackageName(), R.layout.today_schedule_widget);
+        ComponentName theWidget = new ComponentName(Objects.requireNonNull(getContext()), TodayScheduleWidget.class);
+        int[] ids = manager.getAppWidgetIds(theWidget);
+
+        manager.notifyAppWidgetViewDataChanged(ids, R.id.lvSchedule);
+        manager.updateAppWidget(ids, view);
     }
 }

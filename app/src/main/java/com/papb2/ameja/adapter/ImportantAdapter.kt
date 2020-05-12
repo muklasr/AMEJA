@@ -45,7 +45,7 @@ class ImportantAdapter :
                 val date = schedule.date!!.split("/")
                 tvDate.text = date[0]
                 tvAgenda.text = schedule.agenda
-                tvInfo.text = "${schedule.start}-${schedule.end} at ${schedule.location}"
+                tvInfo.text = "${schedule.start}-${schedule.end}${context.getString(R.string.at)}${schedule.location}"
 
                 itemView.setOnClickListener { onItemClickCallback?.onItemClicked(schedule) }
             }

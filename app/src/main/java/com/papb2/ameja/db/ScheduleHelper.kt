@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase
 import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.DATE
 import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.ID
 import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.IMPORTANT
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.START
+import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.STATUS
 import com.papb2.ameja.db.DatabaseContract.ScheduleColumns.Companion.TABLE_NAME
 
 class ScheduleHelper(context: Context) {
@@ -54,17 +56,43 @@ class ScheduleHelper(context: Context) {
                 arrayOf(date),
                 null,
                 null,
+                "date($START) ASC",
+                null
+        )
+    }
+
+    fun queryImportant(state: Boolean): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$IMPORTANT = ?",
+                arrayOf(state.toString()),
+                null,
+                null,
                 null,
                 null
         )
     }
 
-    fun queryImportant(state: String): Cursor {
+    private fun queryByMonthAndStatus(month: String, status: Int): Cursor {
         return database.query(
                 DATABASE_TABLE,
                 null,
-                "$IMPORTANT = ?",
-                arrayOf(state),
+                "$DATE like '%$month%' AND $STATUS = $status",
+                null,
+                null,
+                null,
+                null,
+                null
+        )
+    }
+
+    private fun queryByDateAndStatus(status: Int, date: String): Cursor {
+        return database.query(
+                DATABASE_TABLE,
+                null,
+                "$DATE = '$date' AND $STATUS = $status",
+                null,
                 null,
                 null,
                 null,
@@ -94,5 +122,13 @@ class ScheduleHelper(context: Context) {
 
     fun delete(id: String): Int {
         return database.delete(DATABASE_TABLE, "$ID = ?", arrayOf(id))
+    }
+
+    fun countByMonthAndStatus(month: String, status: Int):Int{
+        return queryByMonthAndStatus(month, status).count
+    }
+
+    fun countByDateAndStatus(date: String, status: Int): Int{
+        return queryByDateAndStatus(status, date).count
     }
 }

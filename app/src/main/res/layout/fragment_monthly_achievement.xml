@@ -18,29 +18,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_mode"
         android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
         android:padding="8dp"
         android:text="@string/monthly"
         android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btnSelection"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-    <Button
-        android:id="@+id/btnSelection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/bg_mode"
-        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-        android:padding="8dp"
-        android:text="@string/april"
-        android:textAllCaps="false"
-        app:layout_constraintLeft_toRightOf="@id/btnMode"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btnMode" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <com.anychart.AnyChartView
         android:id="@+id/any_chart_view"
@@ -63,12 +48,8 @@
 
     <TextView
         android:id="@+id/lblTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/totalLabelStyle"
         android:text="@string/total_agenda"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/lblCompleted"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -89,12 +70,8 @@
 
     <TextView
         android:id="@+id/tvTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/totalLabelStyle"
         android:text="60"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@id/lblTotal"
         app:layout_constraintRight_toRightOf="parent" />
 

@@ -1,207 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/design_default_color_background"
+    android:paddingBottom="32dp"
+    android:scrollbars="none"
     tools:context=".ui.HomeFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_dashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Hi,"
-                android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_dashboard"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Mukidi"
-                android:textColor="@color/design_default_color_on_secondary"
-                android:textSize="18sp" />
-
-            <ImageButton
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_settings_grey_24dp"
-                android:contentDescription="@string/setting_button" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="@string/today_s_schedule"
-                android:textColor="#000000"
-                android:textSize="14sp" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="31dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="13 April 2020"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="130dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape1_home"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:id="@+id/completed"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginTop="@dimen/activity_vertical_margin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="@string/completed"
-                    android:textColor="@color/design_default_color_background"
-                    android:textSize="14sp" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="2/10"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/importantSchedule"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="@string/important_schedule"
-                    android:textColor="@color/design_default_color_background"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="1"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/notCompleted"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="@string/not_completed"
-                    android:textColor="@color/design_default_color_background"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tanggaltudei"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="15dp"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="1"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="320dp"
+            android:id="@+id/text_dashboard"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/hi"
+            android:textColor="@color/design_default_color_on_secondary"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/titleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_dashboard" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/setting_button"
+            android:src="@drawable/ic_settings_grey_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_dashboard" />
+
+        <TextView
+            android:id="@+id/tvToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/today_s_schedule"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="31dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvToday" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvToday">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape1_home"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/lblCompleted"
+                    style="@style/textViewHome"
+                    android:text="@string/completed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvCompleted"
+                    style="@style/textViewHome"
+                    android:text="2/10"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lblCompleted" />
+
+                <TextView
+                    android:id="@+id/lblImportant"
+                    style="@style/textViewHome"
+                    android:text="@string/important_schedule"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblCompleted" />
+
+                <TextView
+                    android:id="@+id/tvImportant"
+                    style="@style/textViewHome"
+                    android:text="1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lblImportant" />
+
+                <TextView
+                    android:id="@+id/lblNotCompleted"
+                    style="@style/textViewHome"
+                    android:text="@string/not_completed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblImportant" />
+
+                <TextView
+                    android:id="@+id/tvNotCompleted"
+                    style="@style/textViewHome"
+                    android:text="1"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/lblNotCompleted" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/lblImportantSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/montserrat_regular"
-            android:orientation="vertical"
             android:text="@string/important_schedule"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/cardView" />
 
         <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="80dp"
+            android:id="@+id/listItem1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/shape2_home"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="24dp"
+            app:layout_constraintTop_toBottomOf="@id/lblImportantSchedule">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Meeting with Client"
-                android:textColor="@color/design_default_color_background"
+                android:textColor="@android:color/white"
                 android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="19.00-20.00 at RuangKerja"
@@ -211,7 +170,8 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="320dp"
+            android:id="@+id/lblScheduleList"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -219,69 +179,25 @@
             android:orientation="vertical"
             android:text="@string/schedule_list"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/listItem1" />
 
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape3_home"
-            android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/lblScheduleList" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Kelas"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblScheduleList" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="07.00-11.30 at Kampus"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="320dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape3_home"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Diskusi Kegiatan"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="13.00-14.30 at Perpusat"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
 
