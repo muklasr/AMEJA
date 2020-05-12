@@ -71,4 +71,6 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="update_schedule">Update Schedule</string>
+    <string name="hi">Hi,</string>
+    <string name="welcome">Welcome!</string>
 </resources>

@@ -1,48 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_background"
-    android:orientation="vertical">
+    tools:context=".ui.ArticleFragment">
 
     <TextView
+        android:id="@+id/tvTitle"
         style="@style/titleStyle"
-        android:layout_width="wrap_content"
+        android:text="@string/title_article"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvArticles"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/montserrat_semibold"
-        android:text="@string/title_article" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-    <LinearLayout
-        android:layout_width="340dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/shape2_home"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Meeting with Client"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="19.00-20.00 at RuangKerja"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@ class ScheduleRemoteViewsFactory(private val mContext: Context) :
         val rv = RemoteViews(mContext.packageName,
                 R.layout.widget_item
         )
-        Log.d("TES", mWidgetItems[position].agenda)
+
         rv.setTextViewText(R.id.tvAgenda, mWidgetItems[position].agenda)
         rv.setTextViewText(R.id.tvInfo, mWidgetItems[position].start + mContext.getString(R.string.at) + mWidgetItems[position].location)
 
