@@ -2,7 +2,7 @@
 <img src="https://i.ibb.co/8mpMvDy/icon.png" width="100" title="Icon" alt="Icon"/>
 
 
-Ameja (Schedule Management Application) is an android application that is useful for manage schedule. Ameja was developed using the Kotlin and Java programming languages. The database used is SQLite.
+Ameja (Schedule Management Application) is an android application for manage daily schedule. Ameja was developed using the Kotlin and Java programming languages. The database used is SQLite.
 
 ### Features
 - [x] Show Agenda/Schedule (Today and Weekly)
@@ -36,7 +36,7 @@ Ameja (Schedule Management Application) is an android application that is useful
 <img src="https://i.ibb.co/ZKqhGnW/photo-2020-05-13-00-37-19.jpg" width="100" title="Achievement Dialog" alt="Achievement Dialog"/>
 <img src="https://i.ibb.co/txF6V0H/photo-2020-05-13-00-37-22.jpg" width="100" title="Monthly Achievement" alt="Monthly Achievement"/>
 <img src="https://i.ibb.co/9GH39Wc/photo-2020-05-13-00-37-37.jpg" width="100" title="Weekly Achievement" alt="Weekly Achievement"/>
+<img src="https://i.ibb.co/KwxNPvV/photo-2020-05-13-00-41-47.jpg" width="100" title="Article" alt="Article"/>
 <img src="https://i.ibb.co/wCdD4jL/photo-2020-05-13-00-37-32.jpg" width="100" title="Widget" alt="Widget"/>
 <img src="https://i.ibb.co/3z22MDK/photo-2020-05-13-01-07-05.jpg" width="100" title="Notification" alt="Notification"/>
-<img src="https://i.ibb.co/KwxNPvV/photo-2020-05-13-00-41-47.jpg" width="100" title="Article" alt="Article"/>
 </p>
