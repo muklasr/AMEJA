@@ -39,6 +39,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/setting_button"
             android:src="@drawable/ic_settings_grey_24dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/tvTitle"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/text_dashboard" />
@@ -97,25 +98,11 @@
                     app:layout_constraintTop_toTopOf="@id/lblCompleted" />
 
                 <TextView
-                    android:id="@+id/lblImportant"
-                    style="@style/textViewHome"
-                    android:text="@string/important_schedule"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblCompleted" />
-
-                <TextView
-                    android:id="@+id/tvImportant"
-                    style="@style/textViewHome"
-                    android:text="1"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/lblImportant" />
-
-                <TextView
                     android:id="@+id/lblNotCompleted"
                     style="@style/textViewHome"
                     android:text="@string/not_completed"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lblImportant" />
+                    app:layout_constraintTop_toBottomOf="@id/lblCompleted" />
 
                 <TextView
                     android:id="@+id/tvNotCompleted"
@@ -129,47 +116,6 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/lblImportantSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="@string/important_schedule"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/cardView" />
-
-        <LinearLayout
-            android:id="@+id/listItem1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/shape2_home"
-            android:orientation="vertical"
-            android:padding="24dp"
-            app:layout_constraintTop_toBottomOf="@id/lblImportantSchedule">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Meeting with Client"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="19.00-20.00 at RuangKerja"
-                android:textColor="@color/design_default_color_background"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <TextView
             android:id="@+id/lblScheduleList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,13 +126,15 @@
             android:text="@string/schedule_list"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/listItem1" />
+            app:layout_constraintTop_toBottomOf="@id/cardView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="36dp"
             app:layout_constraintTop_toBottomOf="@id/lblScheduleList" />
 
         <TextView
